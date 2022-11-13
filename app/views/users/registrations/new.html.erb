@@ -9,7 +9,7 @@
     <div class="flex flex-col space-y-5">
       <label for="user_name">
         <p class="font-medium text-slate-700 pb-2">Name</p>
-        <%= f.text_field :user_name, autofocus: true, autocomplete: "user_name", class: "w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow", placeholder: "Enter your name" %>
+        <%= f.text_field :user_name, autofocus: true, autocomplete: "user_name", class: "w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow", placeholder: "Enter your name", required: true %>
       </label>
       <label for="email">
         <p class="font-medium text-slate-700 pb-2">Email address</p>
