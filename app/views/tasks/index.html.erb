@@ -1,17 +1,31 @@
-<p style="color: green"><%= notice %></p>
-
-<%= current_user.try(:user_name) %>
-<h1>Tasks</h1>
-
-<div id="tasks">
-  <% @tasks.each do |task| %>
-    <%= render task %>
-    <p>
-      <%= link_to "Show this task", task %>
-    </p>
-  <% end %>
+<div class="flex flex-grow items-center justify-center  text-gray-600">
+  <!-- Component Start -->
+  <div class="max-w-full p-8 bg-white rounded-lg shadow-lg w-96">
+    <div class="flex items-center mb-6">
+      <svg class="h-8 w-8 text-indigo-500 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
+      </svg>
+      <h4 class="font-semibold ml-3 text-lg"><%= current_user.try(:user_name).capitalize %> Jobs</h4>
+    </div>
+    <div data-controller="tasks">
+      <% @tasks.each do |task| %>
+        <div class="flex mb-2">
+          <%= render task %>
+        </div>
+      <% end %>
+    </div>
+    <div>
+      <input class="hidden" type="checkbox" id="task_4">
+      <label class="flex items-center h-10 px-2 rounded cursor-pointer hover:bg-gray-100" for="task_4">
+        <span class="flex items-center justify-center w-5 h-5 text-transparent border-2 border-gray-300 rounded-full">
+          <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+          </svg>
+        </span>
+        <span class="ml-4 text-sm">Meet Gandalf at Bree.</span>
+      </label>
+    </div>
+    <%= render "form", task:	Task.new %>
+  </div>
 </div>
-
-<%= link_to "New task", new_task_path %>
-
-<%= link_to "Logout", destroy_user_session_path, method: :delete %>
+</div>
