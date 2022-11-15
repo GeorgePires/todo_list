@@ -1,22 +1,31 @@
-<div id="<%= dom_id task %>">
-  <div class="">
-    <input class="hidden" type="checkbox" id="<%= dom_id task %>">
-    <label class="flex items-center h-10 px-2 rounded cursor-pointer hover:bg-gray-100" for="<%= dom_id task %>">
-      <span class="flex items-center justify-center w-5 h-5 text-transparent border-2 border-gray-300 rounded-full">
-        <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-          <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-        </svg>
-      </span>
-      <span class="ml-4 text-sm"><%= task.description %></span>
-    </label>
-      <%= button_to task, method: :delete, class: "flex " do  %>
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-        </svg>
-      <% end %>
-    <!-- <p>
-    <strong>Resolved:</strong>
-    <%#= task.resolved %>
-  </p> -->
+<div class="flex items-center justify-center space-x-4 mt-3">
+  <%= form_with(model: task, class:"text-lg inline-block my-3 w-96") do |form| %>
+    <%= form.check_box :resolved,
+        data: {
+          id: task.id,
+          action: "tasks#is_resolved"
+        },
+        class: "mr-2 align-middle bg-gray-50 border-gray-300 focus:ring-3 focus:ring-blue-300 h-5 w-5 rounded checked:bg-green-500" %>
+
+    <%= task.description %>
+  <% end %>
+
+  <%= link_to edit_task_path(task) do %>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="gray" class="w-6 h-6">
+      <path d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-8.4 8.4a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32l8.4-8.4z" />
+      <path d="M5.25 5.25a3 3 0 00-3 3v10.5a3 3 0 003 3h10.5a3 3 0 003-3V13.5a.75.75 0 00-1.5 0v5.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5V8.25a1.5 1.5 0 011.5-1.5h5.25a.75.75 0 000-1.5H5.25z" />
+    </svg>
+  <% end %>
+
+  <div class="inline-block ml-2">
+    <%= button_to task,
+      method: :delete,
+      form: {
+        data: { turbo_confirm: 'Are you sure?' }
+      } do  %>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="red">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+      </svg>
+    <% end %>
   </div>
 </div>
