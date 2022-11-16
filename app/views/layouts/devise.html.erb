@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="h-full bg-gray-50">
   <head>
-    <title>TodoList</title>
+    <title>ToDoList</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +11,11 @@
   </head>
   <body class="h-full">
     <div class="container px-5 py-24 mx-auto">
+     <% if notice.present? %>
+        <p class="text-justify py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg" id="notice">
+          <%= notice %>
+        </p>
+      <% end %>
       <%= yield %>
     </div>
   </body>
