@@ -76,5 +76,4 @@ group :test do
   gem "webdrivers"
   gem "rspec"
   gem "rspec-rails"
-  gem "rspec-json-expectations"
 end
