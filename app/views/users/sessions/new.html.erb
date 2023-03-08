@@ -3,10 +3,10 @@
   <h1 class="text-4xl font-medium">Login</h1>
   <div class="my-5">
     <button class="w-full text-center py-3 my-3 border flex space-x-2 items-center justify-center border-slate-200 rounded-lg text-slate-700 hover:border-slate-400 hover:text-slate-900 hover:shadow transition duration-150 disabled">
-      <p class="text-slate-500">Hi, Welcome back 👋</p>
+      <p class="text-slate-500">Hi, welcome back 👋</p>
     </button>
   </div>
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "my-10"}) do |f| %>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "my-10" }) do |f| %>
     <div class="flex flex-col space-y-5">
       <label for="email">
         <p class="font-medium text-slate-700 pb-2">Email address</p>
